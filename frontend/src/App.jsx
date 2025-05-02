@@ -1,10 +1,18 @@
-import { useState } from "react";
+import HomePage from "./pages/Homepage";
+import ChatPage from "./pages/ChatPage";
+import { Routes, Route } from "react-router-dom";
+
+import "./App.css";
+
+
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to the React App</h1>
-      <p>This is a simple React application.</p>
+    <div className="App">
+      <Routes>
+        <Route path="/" exact element={<HomePage />} />
+        <Route path="/chats" element={<ChatPage />} />
+      </Routes>
     </div>
   );
 }
