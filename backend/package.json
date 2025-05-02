@@ -1,0 +1,29 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "RealTime Chat App",
+  "homepage": "https://github.com/gitApurv/Chat-App",
+  "bugs": {
+    "url": "https://github.com/gitApurv/Chat-App/issues",
+    "email": "apurvmaurya5@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitApurv/Chat-App.git"
+  },
+  "license": "ISC",
+  "author": "Apurv Maurya",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
