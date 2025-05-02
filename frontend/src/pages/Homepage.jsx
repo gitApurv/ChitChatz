@@ -3,9 +3,7 @@ import { useState } from "react";
 import { Container, Box, Typography } from "@mui/material";
 
 import Tab from "@mui/material/Tab";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
+import { TabContext, TabList, TabPanel } from "@mui/lab";
 
 import Login from "../components/auth/Login";
 import Signup from "../components/auth/Signup";
