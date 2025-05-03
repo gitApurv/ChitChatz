@@ -8,7 +8,7 @@ This is the frontend of the **MERN Chat App** built with **React**. It communica
 - **React Router**: For client-side routing.
 - **Axios**: HTTP client for making API requests.
 - **Socket.IO Client**: For real-time chat functionality.
-- **Tailwind CSS / Material UI**: For styling (can be swapped).
+- **Material UI**: For styling (can be swapped).
 - **React Context API**: For global state management (e.g., user authentication status).
 
 ## 🚀 Features

@@ -24,18 +24,18 @@ export default function Homepage() {
         sx={{
           display: "flex",
           justifyContent: "center",
-          p: 3,
+          p: 2,
           bgcolor: "white",
           width: "100%",
-          my: "40px",
-          mb: "15px",
+          my: "20px",
+          mb: "10px",
           borderRadius: 2,
           border: "1px solid",
           borderColor: "grey.300",
         }}
       >
         <Typography variant="h4" fontFamily="Work sans" sx={{ fontSize: 30 }}>
-          Talk-A-Tive
+          ChitChatz
         </Typography>
       </Box>
 
@@ -43,7 +43,7 @@ export default function Homepage() {
         sx={{
           bgcolor: "white",
           width: "100%",
-          p: 3,
+          p: 2,
           borderRadius: 2,
           border: "1px solid",
           borderColor: "grey.300",

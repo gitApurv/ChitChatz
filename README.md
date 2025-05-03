@@ -1,4 +1,4 @@
-# 💬 MERN Chat App
+# 💬 ChitChatz
 
 A real-time chat application built with the **MERN Stack** (MongoDB, Express.js, React, Node.js), featuring authentication, WebSocket-based messaging, and a clean, modern UI.
 
@@ -17,6 +17,8 @@ A real-time chat application built with the **MERN Stack** (MongoDB, Express.js,
 
 - React.js
 - Socket.IO Client
+- Axios
+- Material UI
 
 ### Backend:
 

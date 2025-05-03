@@ -1,14 +1,15 @@
 import { useState } from "react";
 
-import Stack from "@mui/material/Stack";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
+  Stack,
   IconButton,
   InputAdornment,
   FormControl,
-  InputLabel,
+  FormLabel,
   OutlinedInput,
+  Button,
 } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export default function Signup() {
   const [name, setName] = useState("");
@@ -16,6 +17,8 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [loadingProfilePicture, setLoadingProfilePicture] = useState(false);
 
   function handleClickShowPassword() {
     setShowPassword((show) => !show);
@@ -25,10 +28,20 @@ export default function Signup() {
     event.preventDefault();
   };
 
+  const postProfilePicture = (profilePicture) => {
+    setLoadingProfilePicture(true);
+
+    setLoadingProfilePicture(false);
+  };
+
+  const handleSignup = () => {
+    console.log(name, email, password, confirmPassword, profilePicture);
+  };
+
   return (
-    <Stack spacing={2}>
+    <Stack spacing={1}>
       <FormControl required variant="outlined" fullWidth margin="normal">
-        <InputLabel htmlFor="name">Name</InputLabel>
+        <FormLabel htmlFor="name">Name</FormLabel>
         <OutlinedInput
           id="name"
           label="Name"
@@ -37,8 +50,9 @@ export default function Signup() {
           onChange={(e) => setName(e.target.value)}
         />
       </FormControl>
+
       <FormControl required variant="outlined" fullWidth margin="normal">
-        <InputLabel htmlFor="email">Email</InputLabel>
+        <FormLabel htmlFor="email">Email</FormLabel>
         <OutlinedInput
           id="email"
           label="Email"
@@ -47,8 +61,9 @@ export default function Signup() {
           onChange={(e) => setEmail(e.target.value)}
         />
       </FormControl>
+
       <FormControl required variant="outlined" fullWidth margin="normal">
-        <InputLabel htmlFor="password">Password</InputLabel>
+        <FormLabel htmlFor="password">Password</FormLabel>
         <OutlinedInput
           id="password"
           type={showPassword ? "text" : "password"}
@@ -69,8 +84,9 @@ export default function Signup() {
           }
         />
       </FormControl>
+
       <FormControl required variant="outlined" fullWidth margin="normal">
-        <InputLabel htmlFor="confirm-password">Confirm Password</InputLabel>
+        <FormLabel htmlFor="confirm-password">Confirm Password</FormLabel>
         <OutlinedInput
           id="confirm-password"
           type="text"
@@ -80,6 +96,22 @@ export default function Signup() {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
       </FormControl>
+
+      <FormControl variant="outlined" fullWidth margin="normal">
+        <FormLabel htmlFor="profile-picture">Upload Profile Picture</FormLabel>
+        <OutlinedInput
+          id="profile-picture"
+          type="file"
+          accept="image/*"
+          label="Profile Picture"
+          placeholder="Upload Profile Picture"
+          onChange={(e) => postProfilePicture(e.target.files[0])}
+        />
+      </FormControl>
+
+      <Button variant="outlined" onClick={handleSignup}>
+        Sign Up
+      </Button>
     </Stack>
   );
 }
