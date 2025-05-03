@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useSnackbar } from "notistack";
 import {
   Stack,
   IconButton,
@@ -8,13 +8,23 @@ import {
   FormLabel,
   OutlinedInput,
   Button,
+  CircularProgress,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
 
   function handleClickShowPassword() {
     setShowPassword((show) => !show);
@@ -24,8 +34,55 @@ export default function Login() {
     event.preventDefault();
   };
 
-  const handleLogin = () => {
-    console.log(email, password);
+  const handleLogin = async () => {
+    setLoading(true);
+    if (email === "" || password === "") {
+      enqueueSnackbar("Please fill all fields!", {
+        variant: "warning",
+        autoHideDuration: 5000,
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "center",
+        },
+      });
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const res = await axios.post(
+        "/api/user/login",
+        { email: email, password: password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (res.status === 200) {
+        enqueueSnackbar("Login successful!", {
+          variant: "success",
+          autoHideDuration: 5000,
+          anchorOrigin: {
+            vertical: "bottom",
+            horizontal: "center",
+          },
+        });
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        navigate("/chats");
+      }
+    } catch (err) {
+      enqueueSnackbar(err.response.data.message, {
+        variant: "error",
+        autoHideDuration: 5000,
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "center",
+        },
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -64,8 +121,8 @@ export default function Login() {
         />
       </FormControl>
 
-      <Button variant="outlined" onClick={handleLogin}>
-        Login
+      <Button variant="outlined" onClick={handleLogin} disabled={loading}>
+        {loading ? <CircularProgress size={20} /> : "Login"}
       </Button>
     </Stack>
   );

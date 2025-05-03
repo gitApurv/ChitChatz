@@ -5,11 +5,12 @@ const bcrypt = require("bcrypt");
 module.exports.registerUser = async (req, res, next) => {
   const { name, email, password, profilePicture } = req.body;
 
-  if (!name || !email || !password) {
-    res.status(400);
-    throw new Error("All fields are required");
-  }
   try {
+    if (!name || !email || !password) {
+      res.status(400);
+      throw new Error("All fields are required");
+    }
+
     const userExists = await User.findOne({ email: email });
 
     if (userExists) {

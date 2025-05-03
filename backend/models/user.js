@@ -18,7 +18,7 @@ const userSchema = new mogoose.Schema(
     profilePicture: {
       type: String,
       default:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Ffree-png-vectors%2Favatar&psig=AOvVaw2lqWsY5frM1c-1EdUPo5s2&ust=1746302014166000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIC4r4zIhY0DFQAAAAAdAAAAABAE",
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
     },
   },
   {
