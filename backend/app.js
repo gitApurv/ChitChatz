@@ -5,12 +5,14 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const userRoutes = require("./routes/user");
+const chatRoutes = require("./routes/chat");
 
 const app = express();
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
 
 app.use("/api/user", userRoutes);
+app.use("/api/chat", chatRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = res.statusCode || 500;
