@@ -88,11 +88,12 @@ module.exports.createGroup = async (req, res, next) => {
       isGroupChat: true,
       users: users,
       groupAdmin: req.user._id,
-    })
+    });
+    const fullGroupChat = await Chat.findOne({ _id: groupChat._id })
       .populate("users", "-password")
       .populate("groupAdmin", "-password");
 
-    res.status(200).json(groupChat);
+    res.status(200).json(fullGroupChat);
   } catch (err) {
     next(err);
   }
