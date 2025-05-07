@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 import { Container, Box, Typography } from "@mui/material";
 
@@ -10,10 +12,15 @@ import Signup from "../components/auth/Signup";
 
 export default function Homepage() {
   const [value, setValue] = useState("1");
-
+  const navigate = useNavigate();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) navigate("/chats");
+  }, [navigate]);
 
   return (
     <Container

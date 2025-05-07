@@ -31,11 +31,13 @@ module.exports.registerUser = async (req, res, next) => {
     if (user) {
       res.status(201).json({
         message: "User created successfully",
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        profilePicture: user.profilePicture,
-        token: generateToken(user._id),
+        user: {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          profilePicture: user.profilePicture,
+          token: generateToken(user._id),
+        },
       });
     } else {
       res.status(400);
@@ -65,12 +67,14 @@ module.exports.loginUser = async (req, res, next) => {
 
   res.status(200).json({
     message: "User logged in successfully",
-    _id: user._id,
-    name: user.name,
-    email: user.email,
-    isAdmin: user.isAdmin,
-    profilePicture: user.profilePicture,
-    token: generateToken(user._id),
+    user: {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      profilePicture: user.profilePicture,
+      token: generateToken(user._id),
+    },
   });
 };
 

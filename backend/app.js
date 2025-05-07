@@ -23,5 +23,6 @@ app.use((err, req, res, next) => {
 });
 
 connectDB().then(() => {
+  console.log("Connected to MongoDB");
   app.listen(process.env.PORT);
 });
