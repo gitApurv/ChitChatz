@@ -1,5 +1,4 @@
 import { ChatState } from "../context/ChatProvider";
-
 import { Box } from "@mui/material";
 
 import SideDrawer from "../components/chat/SideDrawer";
@@ -7,7 +6,7 @@ import MyChats from "../components/chat/MyChats";
 import ChatBox from "../components/chat/ChatBox";
 
 export default function Chatpage() {
-  const user = ChatState();
+  const { user } = ChatState();
   return (
     <div style={{ width: "100%" }}>
       {user && <SideDrawer />}
@@ -17,6 +16,8 @@ export default function Chatpage() {
           justifyContent: "space-between",
           width: "100%",
           height: "90vh",
+          boxSizing: "border-box",
+          p: "10px",
         }}
       >
         {user && <MyChats />}
